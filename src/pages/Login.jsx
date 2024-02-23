@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import {TbSocial}  from "react-icons/tb";
+import {BsShare} from "react-icons/bs";
+// import { AiOutlineInteraction } from "react-icons/tb";
+import {AiOutlineInteraction} from "react-icons/ai";
 import { CustomButton, Loading, TextInput } from '../components';
+import {  ImConnection  } from "react-icons/im"
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -15,6 +19,9 @@ const Login = () => {
   } = useForm({
     mode:"onChange",
   }); 
+  const onSubmit = async(data)=>{
+
+  }
   const [errMsg,setErrMsg] = useState("");
   const [isSubmittting,setIsSubmitting] = useState(false);
   // const dispatch = useDispatch();
@@ -44,7 +51,9 @@ const Login = () => {
         <span className='text-sm mt-2 text-ascent-2'>
           welcome back
         </span>
-        <form  className='py-8 flex flex-col gap-5'>
+        <form  className='py-8 flex flex-col gap-5'
+        
+        onSubmit={handleSubmit(onSubmit)}>
           <TextInput
           name ="email" placeholder = "email@example.com"
 
@@ -70,13 +79,13 @@ const Login = () => {
            register = {
             register("password",{
 
-              required:"Email Address is required",
+              required:"password is required",
 
   })}
 
   styles = "w-full rounded-full"
   labelStyle = 'ml-2'
-  error ={errors.password ?   errors.email.message : ""}
+  error ={errors.password ?   errors.password.message : ""}
           
           />
           <Link to="/reset-password"
@@ -125,12 +134,33 @@ const Login = () => {
              alt="BgImage"
              className='w-48 2xk:w-64 h-48 2xl:h-64 rounded-full object-cover'
              />
+             <div className='absolute flex items-center gap-1 bg-white right-10 top-10 py-2 px-5 rounded-full '>
+            <BsShare size={14}/>
+            <span className='text-xs font-medium'>Share</span>
 
+             </div>
+             <div className='absolute flex items-center gap-1 bg-white left-10 top-6 py-2 px-5 rounded-full '>
+            <ImConnection/>
+            <span className='text-xs font-medium'>Connect</span>
+
+             </div>
+             <div className='absolute flex items-center gap-1 bg-white left-12 bottom-6 py-2 px-5 rounded-full '>
+            <AiOutlineInteraction/>
+            <span className='text-xs font-medium'>Interact</span>
+
+             </div>
+
+          </div>
+          <div className='mt-16 text-center'>
+          <p className='text-white text-base'>Connect with friends & have share  for fun</p>
+          <span className='text-sm text-white/80'>Share memories with frineds and the world</span>
+          </div>
+        
           </div>
       </div>
      </div>
       
-      </div>
+      // </div>
   )
 }
 
