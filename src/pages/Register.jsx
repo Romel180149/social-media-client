@@ -7,9 +7,9 @@ import { CustomButton, Loading, TextInput } from '../components';
 import {  ImConnection  } from "react-icons/im"
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
-// import { useDispatch } from 'react-redux';
-import { UseDispatch } from 'react-redux';
+
 import { BgImage } from '../assets';
+// import { useDispatch } from 'react-redux';
 
 const Register = () => {
   const  {
@@ -21,12 +21,11 @@ const Register = () => {
   } = useForm({
     mode:"onChange",
   }); 
-  const onSubmit = async(data)=>{
+  const onSubmit = async(data)=>{ };
 
-  }
   const [errMsg,setErrMsg] = useState("");
   const [isSubmittting,setIsSubmitting] = useState(false);
-  // const dispatch = useDispatch()
+  // const dispatch = useDispatch();
   return (
     <div className='bg-bgColor w-full h-[100vh] flex items-center justify-center p-6'>
       
@@ -161,7 +160,7 @@ const Register = () => {
           }
         </form>
         <p className='text-ascent-2 text-sm text-center'>
-          Already has an account?{""}
+          Already has an account?{" "}
           <Link
           to='/login'
           className='text-[#065ad8] font-semibold ml-2 cursor-pointer'
@@ -211,4 +210,4 @@ const Register = () => {
   )
 }
 
-export default Register
+export default Register;

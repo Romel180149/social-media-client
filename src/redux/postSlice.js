@@ -1,38 +1,35 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { dispatch } from "./store";
+
+// import { dispatch } from "./store";
 
 const initialState = {
-
-    user: JSON.parse(window?.localStorage.getItem("user"))?? {},
-    edit: false,
+posts:{},
 
 };
-const userSlice = createSlice({
-    name: "user",
+const postSlice = createSlice({
+    name: "post",
     initialState,
     reducers: {
-        login(state,action){
-            state.user = action.payload;
-            localStorage.setItem("user",JSON.stringify(action.payload));
-
+        getPosts(state,action){
+            state.posts = action.payload;
         },
     },
 
 });
-export default userSlice.reducer;
+export default postSlice.reducer;
 
-export function UserLogin(user){
+export function SetPosts(post){
     return (dispatch,getState)=>{
-        dispatch(userSlice.actions.login(user));
+        dispatch(postSlice.actions.getPosts(post));
     };
 }
-export function Logout(){
-    return (dispatch,getState)=>{
-        dispatch(userSlice.actions.Logout(user));
-    };
-}
-export function UpdateProfile(val){
-    return (dispatch,getState)=>{
-        dispatch(userSlice.actions.UpdateProfile(user));
-    };
-}
+// export function Logout(){
+//     return (dispatch,getState)=>{
+//         dispatch(postSlice.actions.Logout(user));
+//     };
+// }
+// export function UpdateProfile(val){
+//     return (dispatch,getState)=>{
+//         dispatch(postSlice.actions.UpdateProfile(user));
+//     };
+// }

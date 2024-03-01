@@ -1,8 +1,10 @@
 import { Outlet, Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { Home, Login, Profile, Register, ResetPassword } from "./pages";
+import { useSelector } from "react-redux";
 function Layout() {
-  const user = null;
+  const {user} = useSelector((state) => state.user);
   const location = useLocation();
+  console.log(user);
   return user?.token ? (
     <Outlet></Outlet>
   ) : (
@@ -10,6 +12,7 @@ function Layout() {
   )
 }
 function App() {
+  const {theme} = useSelector((state)=>state.theme);
   return (
     <div className="w-full min-h-[100vh]">
       <Routes>
